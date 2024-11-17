@@ -20,9 +20,9 @@ SRCS = $(wildcard *.c)
 OBJS = ${SRCS:.c=.o}
 
 $(TARGET): $(OBJS)
-	$(LD) -o $@ $^ $(LDFLAGS)
-	$(STRIP) $@
-	@cp -f $(TARGET) $(BINARY_DIR)
+	@mkdir -p $(CURDIR)/bin
+	$(LD) -o $(CURDIR)/bin/$@ $^ $(LDFLAGS)
+	$(STRIP) $(CURDIR)/bin/$@
 
 %.o: %.c
 	$(CC) $(CFLAGS) -o $@ -c $<
