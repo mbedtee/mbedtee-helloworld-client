@@ -43,10 +43,19 @@ int main(int argc, char *argv[])
 	}
 
 	ops.paramTypes = TEEC_PARAM_TYPES(TEEC_NONE, TEEC_NONE, TEEC_NONE, TEEC_NONE);
-
 	ret = TEEC_InvokeCommand(&session, cmd_id, &ops, &errorigin);
 
-	printf("TEEC_InvokeCommand - (%x)\n", (int)ret);
+	ops.paramTypes = TEEC_PARAM_TYPES(TEEC_VALUE_INPUT, TEEC_NONE, TEEC_NONE, TEEC_NONE);
+	ret = TEEC_InvokeCommand(&session, cmd_id + 1, &ops, &errorigin);
+
+	ops.paramTypes = TEEC_PARAM_TYPES(TEEC_NONE, TEEC_VALUE_INPUT, TEEC_NONE, TEEC_NONE);
+	ret = TEEC_InvokeCommand(&session, cmd_id + 2, &ops, &errorigin);
+
+	ops.paramTypes = TEEC_PARAM_TYPES(TEEC_NONE, TEEC_NONE, TEEC_VALUE_INPUT, TEEC_NONE);
+	ret = TEEC_InvokeCommand(&session, cmd_id + 3, &ops, &errorigin);
+
+	ops.paramTypes = TEEC_PARAM_TYPES(TEEC_NONE, TEEC_NONE, TEEC_NONE, TEEC_VALUE_INPUT);
+	ret = TEEC_InvokeCommand(&session, cmd_id + 4, &ops, &errorigin);
 
 	TEEC_CloseSession(&session);
 
