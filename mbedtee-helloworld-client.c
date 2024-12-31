@@ -1,5 +1,5 @@
+// SPDX-License-Identifier: Apache-2.0
 /*
- * SPDX-License-Identifier: Apache-2.0
  * Copyright (c) 2019 KapaXL (kapa.xl@outlook.com)
  */
 
@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 	TEEC_Result ret;
 	TEEC_Context context;
 	TEEC_Session session;
-	uint32_t cmd_id = 0;;
+	uint32_t cmd_id = 0;
 	uint32_t errorigin = 0;
 	const TEEC_UUID uuid = TA_UUID;
 	TEEC_Operation ops = {0};
